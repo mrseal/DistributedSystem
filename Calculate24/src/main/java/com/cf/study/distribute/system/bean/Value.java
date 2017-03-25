@@ -2,8 +2,8 @@ package com.cf.study.distribute.system.bean;
 
 public class Value {
 
-    String formula;
-    double value;
+    private final String formula;
+    private final double value;
 
     Value(final double value) {
         this.value = value;
