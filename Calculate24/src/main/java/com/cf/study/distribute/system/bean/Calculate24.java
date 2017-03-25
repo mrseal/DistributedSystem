@@ -25,7 +25,7 @@ public class Calculate24 {
         }
         final long cost = System.currentTimeMillis() - start;
         // TODO: implement time cost via interceptor
-        LOGGER.debug("Calculate24 request processed in {}ms", cost);
+        LOGGER.debug("[Calculate24] send response in {}ms", cost);
         return result.toString();
     }
 
