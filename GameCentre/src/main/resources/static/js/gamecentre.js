@@ -9,13 +9,24 @@ $(document).ready(function() {
 		var calculate24 = "http://localhost:8090/calculate24/" + nums.join('/');
 
 		$.ajax({
-			url : calculate24
-		}).then(function(data) {
-			$('#result').text(data);
-		});
+			url : calculate24,
+			success: function(data, xhr) {
+				$('#resultPanel').removeClass('alert-danger');
+				$('#resultPanel').addClass('alert-info');
+				$('#result').text(data);
+			},    
+			error: function (e, xhr) {
+				$('#resultPanel').removeClass('alert-info');
+				$('#resultPanel').addClass('alert-danger');
+				$('#result').text("ERROR : Calculate24 server response not received.");
+				console.log(e);
+			}
+		})
 	});
 	
 	$('#calc24 .form-control-single').click(function(event) {
+		$('#resultPanel').removeClass('alert-danger');
+		$('#resultPanel').addClass('alert-info');
 		$('#result').text('');
 	});
 });
