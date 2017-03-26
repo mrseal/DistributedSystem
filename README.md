@@ -23,4 +23,11 @@ GameCentre is the API gateway and sends HTTP requests to the services
 ### 1.0.1
 There's only one server of Calculate24Service (localhost:8090)
 
-GameCentre calls the REST interface of Calculate24Sevice with static IP address via JQuery ajax
+GameCentre calls the REST interface of Calculate24Service with static IP address via JQuery ajax
+
+### 1.0.2
+Implement Load Balancer in GameCentre via Spring Cloud Netflix Ribbon
+
+Server list of Calculated24Service is hardcoded (localhost:8090, localhost:8091, localhost:8092)
+
+Ribbon automatially checks the health of Calculated24Service every 15s
