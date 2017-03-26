@@ -1,13 +1,37 @@
 package com.cf.study.distributed.system;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+@RestController
+@RibbonClient(name = "calculate24server", configuration = Calculate24ServerConfiguration.class)
 public class GameCentreApplication {
+
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Autowired
+    RestTemplate restTemplate;
+
+    @RequestMapping("/calculate24")
+    public String calculate24(@RequestParam("a") final int a, @RequestParam("b") final int b, @RequestParam("c") final int c,
+            @RequestParam("d") final int d) {
+        return restTemplate.getForObject("http://calculate24server/calculate24?a={a}&b={b}&c={c}&d={d}", String.class, a, b, c, d);
+    }
 
     public static void main(final String[] args) {
         SpringApplication.run(GameCentreApplication.class, args);
     }
-
 }

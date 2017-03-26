@@ -1,32 +1,33 @@
 $(document).ready(function() {
 	$('#go').click(function(event) {
 		event.preventDefault();
-		var nums = [];
-		nums[0] = $.trim($('#a').val());
-		nums[1] = $.trim($('#b').val());
-		nums[2] = $.trim($('#c').val());
-		nums[3] = $.trim($('#d').val());
-		var calculate24 = "http://localhost:8090/calculate24/" + nums.join('/');
 
 		$.ajax({
-			url : calculate24,
+			type: "GET",
+			url: "/calculate24",
+			data: {
+				a: $.trim($('#a').val()),
+				b: $.trim($('#b').val()),
+				c: $.trim($('#c').val()),
+				d: $.trim($('#d').val())
+			},
 			success: function(data, xhr) {
-				$('#resultPanel').removeClass('alert-danger');
-				$('#resultPanel').addClass('alert-info');
-				$('#result').text(data);
-			},    
+				$('#result').removeClass('alert-danger');
+				$('#result').addClass('alert-info');
+				$('#result').html(data.replace(/\n/g, "<br />"));
+			},
 			error: function (e, xhr) {
-				$('#resultPanel').removeClass('alert-info');
-				$('#resultPanel').addClass('alert-danger');
-				$('#result').text("ERROR : Calculate24 server response not received.");
+				$('#result').removeClass('alert-info');
+				$('#result').addClass('alert-danger');
+				$('#result').html("ERROR [" + e.status + "]: Calculate24 server response not received.");
 				console.log(e);
 			}
 		})
 	});
 	
 	$('#calc24 .form-control-single').click(function(event) {
-		$('#resultPanel').removeClass('alert-danger');
-		$('#resultPanel').addClass('alert-info');
-		$('#result').text('');
+		$('#result').removeClass('alert-danger');
+		$('#result').addClass('alert-info');
+		$('#result').html('');
 	});
 });

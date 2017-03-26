@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: calculate24
+
+logging:
+    file: ${java.io.tmpdir}/springboot.log
+    level.com.cf.study.distribute.system: DEBUG

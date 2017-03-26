@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: gamecentre
+
+calculate24server:
+    ribbon:
+        eureka:
+            enable: false
+        listOfServers: localhost:8090,localhost:8091,localhost:8092
+        ServerListRefreshInterval: 15000
