@@ -18,7 +18,7 @@ public class Calculate24Controller {
     }
 
     @CrossOrigin
-    @GetMapping("/calculate24")
+    @GetMapping("/{applicationName}")
     public String calculate(@RequestParam("a") final int a, @RequestParam("b") final int b, @RequestParam("c") final int c,
             @RequestParam("d") final int d) {
         return Calculate24.calculate(a, b, c, d);
