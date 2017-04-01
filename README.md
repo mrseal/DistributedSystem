@@ -18,6 +18,12 @@ Calculate24Service provides an RESTful service
 ## Client
 GameCentre is the API gateway and sends HTTP requests to the services
 
+## Testsuite
+Integration test - use docker
+
+Testsuite is disabled by default, run "mvn clean install -Dts" to activate it
+
+
 # Release Notes
 
 ### 1.0.1

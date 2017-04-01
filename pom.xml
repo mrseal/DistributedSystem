@@ -16,5 +16,6 @@
         <module>Calculate24Service</module>
         <module>GameCentre</module>
         <module>EurekaServiceRegistry</module>
+        <module>testsuite</module>
     </modules>
 </project>
