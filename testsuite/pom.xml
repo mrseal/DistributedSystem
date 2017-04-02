@@ -8,13 +8,14 @@
     </parent>
     <artifactId>testsuite</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>integration</module>
-    </modules>
 
     <properties>
         <maven.test.skip>true</maven.test.skip>
     </properties>
+
+    <modules>
+        <module>integration</module>
+    </modules>
 
     <profiles>
         <profile>
